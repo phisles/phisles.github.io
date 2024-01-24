@@ -47,6 +47,30 @@
         th {
             background-color: #333;
         }
+
+        .sidebar {
+    position: fixed; /* Fixed sidebar (it will stay in place when you scroll) */
+    top: 0;         /* Align to the top */
+    left: 0;        /* Align to the left */
+    width: 200px;   /* Width of the sidebar */
+    height: 100%;   /* Full-height sidebar */
+    background-color: #f1f1f1; /* Sidebar background color */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px; /* Some padding at the top */
+}
+
+.sidebar a {
+    padding: 6px 8px 6px 16px; /* Padding for the links inside the sidebar */
+    text-decoration: none; /* Remove default link styling */
+    font-size: 25px; /* Increase font size */
+    color: #818181; /* Link color */
+    display: block; /* Make links take up the full width of the sidebar */
+}
+
+.sidebar a:hover {
+    color: #f1f1f1; /* Hover color */
+}
+
     </style>
 </head>
 <body>
