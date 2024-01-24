@@ -1,4 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+    const asteroidInfo = document.getElementById('asteroid-data');
+    const apiKey = 'YOUR_API_KEY'; // Replace with your actual NASA API key
+    const startDate = new Date().toISOString().split('T')[0]; // Today's date
+    const endDate = startDate; // For single day data
+
+    const apiUrl = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=${apiKey}`;
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            const asteroids = data.near_earth_objects[startDate];
+            const closestAsteroid = asteroids.reduce((closest, current) => {
+                return (closest.close_approach_data[0].miss_distance.kilometers < current.close_approach_data[0].miss_distance.kilometers) ? closest : current;
+            });
+            asteroidInfo.textContent = `Name: ${closestAsteroid.name}, Distance: ${closestAsteroid.close_approach_data[0].miss_distance.kilometers} kilometers`;
+        })
+        .catch(error => {
+            console.error('Error fetching asteroid data: ', error);
+            asteroidInfo.textContent = 'Unable to load asteroid data.';
+        });
     // ... [Your existing code for astronomical data]
 
     const earthImage = document.getElementById('earth-image');
