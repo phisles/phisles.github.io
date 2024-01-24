@@ -33,5 +33,7 @@ function constructImageUrl(imageData) {
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
 
-    return `https://epic.gsfc.nasa.gov/archive/natural/${year}/${month}/${day}/png/${imageData.image}.png`;
+    const imageUrl = `https://epic.gsfc.nasa.gov/archive/natural/${year}/${month}/${day}/png/${imageData.image}.png`;
+    console.log('Constructed Image URL:', imageUrl);  // Log the URL for debugging
+    return imageUrl;
 }
