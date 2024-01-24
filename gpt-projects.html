@@ -8,20 +8,24 @@
     <style>
         /* Styles specific to this page */
         body {
-            background-color: #000;
-            color: #00ff00;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
+    background-color: #000;
+    color: #00ff00;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    padding-left: 200px; /* Space for the sidebar */
+}
 
-        .container {
-            margin: 20% auto;
-            padding: 20px;
-            max-width: 600px;
-            border: 2px solid #00ff00;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
-        }
+.container {
+    flex-grow: 1;
+    margin: 20px;
+    padding: 20px;
+    max-width: calc(100% - 240px); /* Adjust width to account for sidebar */
+    border: 2px solid #00ff00;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    text-align: center;
+}
 
         h1 {
             font-size: 36px;
@@ -49,27 +53,30 @@
         }
 
         .sidebar {
-    position: fixed; /* Fixed sidebar (it will stay in place when you scroll) */
-    top: 0;         /* Align to the top */
-    left: 0;        /* Align to the left */
-    width: 200px;   /* Width of the sidebar */
-    height: 100%;   /* Full-height sidebar */
-    background-color: #f1f1f1; /* Sidebar background color */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 20px; /* Some padding at the top */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #000; /* Match the body's background color */
+    color: #00ff00; /* Neon green font color */
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    padding-top: 20px;
 }
 
 .sidebar a {
-    padding: 6px 8px 6px 16px; /* Padding for the links inside the sidebar */
-    text-decoration: none; /* Remove default link styling */
-    font-size: 25px; /* Increase font size */
-    color: #818181; /* Link color */
-    display: block; /* Make links take up the full width of the sidebar */
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px; /* Adjusted font size */
+    color: #00ff00; /* Neon green link color */
+    display: block;
 }
 
 .sidebar a:hover {
-    color: #f1f1f1; /* Hover color */
+    color: #fff; /* White color on hover */
 }
+
 
     </style>
 </head>
