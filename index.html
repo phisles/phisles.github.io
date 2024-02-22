@@ -2,10 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=https://writer-room.streamlit.app/">
-    <title>Redirecting...</title>
-    
-    <!-- Add your CSS styles inside the head tag -->
+    <title>Welcome to Philip's Testing Page</title>
     <style>
         body {
             background-color: #000;
@@ -13,14 +10,14 @@
             font-family: 'Gill Sans', Arial, sans-serif;
             margin: 0;
             display: flex;
-            padding-left: 200px;
+            padding-left: 200px; /* Space for the sidebar */
         }
 
         .container {
             flex-grow: 1;
             margin: 20px;
             padding: 20px;
-            max-width: calc(100% - 240px);
+            max-width: calc(100% - 240px); /* Adjust width to account for sidebar */
             border: 2px solid #00ff00;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
@@ -41,24 +38,24 @@
             left: 0;
             width: 200px;
             height: 100%;
-            background-color: #000;
-            color: #2ca92c;
-            font-family: 'Gill Sans', Arial, sans-serif;
+            background-color: #000; /* Match the body's background color */
+            color: #2ca92c; /* Neon green font color */
+            font-family: 'Gill Sans', Arial, sans-serif; /* Updated font family */
             overflow-x: hidden;
             padding-top: 20px;
-            border-right: 2px solid #525c52;
+            border-right: 2px solid #525c52; /* Neon green border to separate the sidebar */
         }
 
         .sidebar a {
             padding: 6px 8px 6px 16px;
             text-decoration: none;
-            font-size: 16px;
-            color: #00ff00;
+            font-size: 16px; /* Adjusted font size */
+            color: #00ff00; /* Neon green link color */
             display: block;
         }
 
         .sidebar a:hover {
-            color: #fff;
+            color: #fff; /* White color on hover */
         }
     </style>
 </head>
@@ -67,6 +64,12 @@
         <h1>Welcome to Philip's Testing Site</h1>
         <p>Explore my site to learn more about my projects and certifications.</p>
     </div>
-    <script src="sidebar.js"></script> <!-- Assuming this script is necessary for your site -->
+    <script>
+        // JavaScript redirect script
+        if (window.location.pathname === '/writer-room') {
+            window.location.href = 'https://writer-room.streamlit.app/';
+        }
+    </script>
+    <script src="sidebar.js"></script>
 </body>
 </html>
