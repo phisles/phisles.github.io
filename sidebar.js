@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <a href="https://github.com/phisles?tab=repositories" target="_blank">Git Projects</a>
         <a href="https://philipisles.com/sentiment.html" target="_blank">Netowrk Isolated Sentiment Analysis</a>
         <a href="https://philipisles.com/local-vid-desc.html" target="_blank">Network Isolated Video Description</a>
-        <a href="https://philipisles.com/chunk-summary.html" target="_blank">Network Isolated Chunked Transcript Summarization</a>
+        <a href="https://github.com/phisles/mistral-chunk-summary" target="_blank">Network Isolated Chunked Transcript Summarization</a>
         <a href="https://philipisles.com/index.html" target="_blank">Home</a>
     `;
     document.body.prepend(sidebarDiv);
