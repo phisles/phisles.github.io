@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="sidebar.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My ChatGPT Projects</title>
+    <title>Sentiment Analysis Project</title>
     <style>
         /* Styles specific to this page */
         body {
-    background-color: #000;
-    color: #00ff00;
-    font-family: 'Gill Sans', Arial, sans-serif; /* Updated font family */
-    margin: 0;
-    display: flex;
-    padding-left: 200px; /* Space for the sidebar */
-}
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'Gill Sans', Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            padding-left: 200px; /* Space for the sidebar */
+        }
 
-.container {
-    flex-grow: 1;
-    margin: 20px;
-    padding: 20px;
-    max-width: calc(100% - 240px); /* Adjust width to account for sidebar */
-    border: 2px solid #00ff00;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
-    text-align: center;
-}
+        .container {
+            flex-grow: 1;
+            margin: 20px;
+            padding: 20px;
+            max-width: calc(100% - 240px); /* Adjust width to account for sidebar */
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+            text-align: center;
+        }
 
         h1 {
             font-size: 36px;
@@ -35,124 +34,44 @@
             font-size: 18px;
         }
 
-        /* Styles for the Table */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            border: 1px solid #00ff00;
-            padding: 8px;
-            text-align: left;
-            color: #00ff00;
-        }
-
-        th {
-            background-color: #333;
-        }
-
         .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: 100%;
-    background-color: #000; /* Match the body's background color */
-    color: 2ca92c; /* Neon green font color */
-    font-family: 'Gill Sans', Arial, sans-serif; /* Updated font family */
-    overflow-x: hidden;
-    padding-top: 20px;
-    border-right: 2px solid #525c52; /* Neon green border to separate the sidebar */
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #000; /* Match the body's background color */
+            color: #2ca92c; /* Neon green font color */
+            font-family: 'Gill Sans', Arial, sans-serif;
+            overflow-x: hidden;
+            padding-top: 20px;
+            border-right: 2px solid #525c52; /* Neon green border to separate the sidebar */
+        }
 
-.sidebar a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 16px; /* Adjusted font size */
-    color: #00ff00; /* Neon green link color */
-    display: block;
-}
+        .sidebar a {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 16px; /* Adjusted font size */
+            color: #00ff00; /* Neon green link color */
+            display: block;
+        }
 
-.sidebar a:hover {
-    color: #fff; /* White color on hover */
-}
-
-
+        .sidebar a:hover {
+            color: #fff; /* White color on hover */
+        }
     </style>
 </head>
 <body>
-   
-    
-    <div class="container">
-        
-        <h1>My ChatGPT Projects</h1>
-        <table>
-            <tr>
-                <th>Icon</th>
-                <th>Project</th>
-                <th>Description</th>
-            </tr>
-            <!-- Repeat this row for each project -->
-            <tr>
-                <td><img src="https://raw.githubusercontent.com/phisles/phisles.github.io/main/images/writingAsst-icon.png" alt="PI-Writing-Assistant" width="128" height="128"></td>
-                <td><a href="https://chat.openai.com/g/g-PSvo8wLoM-philip-s-writing-assistant">Philip's Writing Assistant</a></td>
-                <td>Trained GPT with my past novels and screenplays in order to speak with their characters and create new content.</td>
-            </tr>
-            <tr>
-                <td><img src="https://raw.githubusercontent.com/phisles/phisles.github.io/main/images/astrospaceagent-icon.png" alt="Astro Space Agent" width="128" height="128"></td>
-                <td><a href="https://chat.openai.com/g/g-GXF8TfgZI-astro-space-agent">Astro Space Agent</a></td>
-                <td>Blend sci fi concepts with real world physics/biology to determine how you will reach any destination in the universe.</td>
-            </tr>
-            <tr>
-                <td><img src="https://raw.githubusercontent.com/phisles/phisles.github.io/main/images/SunSavingsCalculator-icon.png" alt="Sun Savings Calculator" width="128" height="128"></td>
-                <td><a href="https://chat.openai.com/g/g-nHWOOccvO-sunsavings-calculator">SunSavings Calculator</a></td>
-                <td>Trained on solar power calculations and toolsets developed by the Univrsity of Mexico, your utility bill, and your location, to calculate possible savings using solar panels.</td>
-            </tr>
-            <tr>
-                <td><img src="https://raw.githubusercontent.com/phisles/phisles.github.io/main/images/Finess-Programmer-Icon.png" alt="Fitness Programmer" width="128" height="128"></td>
-                <td><a href="https://chat.openai.com/g/g-ox2p2kPku-fitness-programmer">Fitness Programmer</a></td>
-                <td>Trained on Crossfit methodology and programming literature by Greg Glassman and Pat Sherwood to generate fitness programs based on Crossfit philosophy, based on the user's preferances .</td>
-            </tr>
-            <tr>
-                <td><img src="https://raw.githubusercontent.com/phisles/phisles.github.io/main/images/BugReport-Assistant-icon.png" alt="Bug Report" width="128" height="128"></td>
-                <td><a href="https://chat.openai.com/g/g-YkssaQNz6-bug-report-assistant">Bug Report Assistant</a></td>
-                <td>Helps a user create a bug report that provides the technical team with everything they need to report the issue. Also trained on standard reporting templates for major bug tracking tools like Jira, etc..</td>
-            </tr>
-            <tr>
-                <td><img src="https://raw.githubusercontent.com/phisles/phisles.github.io/main/images/PuppetShow-icon.png" alt="Puppet Show" width="128" height="128"></td>
-                <td><a href="https://chat.openai.com/g/g-BosWZkPHt-puppet-show">Puppet Show</a></td>
-                <td>Takes the number of performers and available puppets to create a puppet show script that takes into acount the number of available hands, so the puppets on stage never conflict with the performers' capabilities.</td>
-            </tr>
-            <tr>
-                <td><img src="https://raw.githubusercontent.com/phisles/phisles.github.io/main/images/Chatbot-icon.svg" alt="PI-Writing-Assistant" width="128" height="128"></td>
-                <td>Support Chatbot</td>
-                <td>The icon in the lower right corner of this webpage contains a GPT4 Chatbot I trained on user support content. Note, this demo only works when activated on the backend, to reduce cost.</td>
-            </tr>
-            <tr>
-             <tr>
-                <td><img src="https://raw.githubusercontent.com/phisles/phisles.github.io/main/images/Chatbot-icon.svg" alt="PI-Writing-Assistant" width="128" height="128"></td>
-                <td><a href="https://philipisles.com/writers-room">The Writers Room</a></td>
-                <td>AI Assistaed Screenwriting Program. Demo Available Upon Request. <a href="https://drive.google.com/file/d/16f89BCubMvhBIacTqXO7XVUyhXqSjATf/view?usp=drive_link">Sample Ouput Here</a></td>
-            </tr>
-            </tr>
-        </table>
+    <div class="sidebar">
+        <a href="https://github.com/phisles/local-sentiment">Sentiment Analysis Repo</a>
     </div>
-
-    <script type="text/javascript">
-  
-      (function(d, t) {
-          var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-          v.onload = function() {
-            window.voiceflow.chat.load({
-              verify: { projectID: '65a5769895b42888a636d13d' },
-              url: 'https://general-runtime.voiceflow.com',
-              versionID: 'production'
-            });
-          }
-          v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-      })(document, 'script');
-
-    </script>
+    <div class="container">
+        <h1>Sentiment Analysis Project</h1>
+        <p>This project analyzes sentiment from various sources to provide insights.</p>
+        <div>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+    <script src="sidebar.js"></script>
 </body>
 </html>
