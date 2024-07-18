@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <a href="https://philipisles.com/gpt-projects.html" target="_blank">Check Out My GPT Projects</a>
         <a href="https://philipisles.com/nasa.html" target="_blank">NASA API</a>
         <a href="https://github.com/phisles?tab=repositories" target="_blank">Git Projects</a>
+        <a href="https://philipisles.com/sentiment.html" target="_blank">Sentiment Analysis</a>
         <a href="https://philipisles.com/index.html" target="_blank">Home</a>
     `;
     document.body.prepend(sidebarDiv);
