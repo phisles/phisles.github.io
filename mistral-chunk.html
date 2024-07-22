@@ -1,1 +1,82 @@
-d
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chunked Transcript Summarization Via Mistral</title>
+    <style>
+        /* Styles specific to this page */
+        body {
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'Gill Sans', Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            padding-left: 200px; /* Space for the sidebar */
+        }
+
+        .container {
+            flex-grow: 1;
+            margin: 20px;
+            padding: 20px;
+            max-width: calc(100% - 240px); /* Adjust width to account for sidebar */
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #000; /* Match the body's background color */
+            color: #2ca92c; /* Neon green font color */
+            font-family: 'Gill Sans', Arial, sans-serif;
+            overflow-x: hidden;
+            padding-top: 20px;
+            border-right: 2px solid #525c52; /* Neon green border to separate the sidebar */
+            z-index: 1000; /* Ensures the sidebar stays on top */
+        }
+
+        .sidebar a {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 16px; /* Adjusted font size */
+            color: #00ff00; /* Neon green link color */
+            display: block;
+        }
+
+        .sidebar a:hover {
+            color: #fff; /* White color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chunked Transcript Summarization Via Mistral</h1>
+        <p>This program reads transcripts from files, splits them into chunks, summarizes each chunk using the Mistral model via the Ollama API, and then iterates through a process to generate and select the best final summaries.</p>
+        <img src="images/minstrel-typing.png" alt="Mistral Typing">
+    </div>
+    <script src="sidebar.js"></script>
+</body>
+</html>
