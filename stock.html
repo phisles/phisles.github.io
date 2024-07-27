@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpaca Portfolio Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .header, .section {
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 20px;
+        }
+        .header {
+            text-align: center;
+        }
+        .config-table {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Alpaca Portfolio Dashboard</h1>
+            <!-- Add your API key and secret here before publishing -->
+            <script>
+                const API_KEY = 'PKBE2A18P2W9JNM5EA9A';
+                const API_SECRET = 'd3InGzpg4aWvt1H22ubaZH15XCjnRU7EBRhPXfwg';
+            </script>
+        </div>
+        
+        <div class="section">
+            <h2>Account Summary</h2>
+            <p><strong>Equity:</strong> $<span id="equity">0.00</span></p>
+            <p><strong>Available Cash:</strong> $<span id="availableCash">0.00</span></p>
+        </div>
+        
+        <div class="section">
+            <h2>Portfolio History</h2>
+            <table id="portfolioHistory">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Equity</th>
+                        <th>Profit/Loss</th>
+                        <th>Profit/Loss %</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>Activity History (All times in PST)</h2>
+            <table id="activityHistory">
+                <thead>
+                    <tr>
+                        <th>Date/Time</th>
+                        <th>Symbol</th>
+                        <th>Asset Type</th>
+                        <th>Side</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Order Status</th>
+                        <th>Total Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>Positions</h2>
+            <table id="positions">
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Asset Type</th>
+                        <th>Quantity</th>
+                        <th>Avg Entry Price</th>
+                        <th>Current Price</th>
+                        <th>Market Value</th>
+                        <th>Cost Basis</th>
+                        <th>Unrealized P/L</th>
+                        <th>Unrealized P/L %</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <h2>Important Configuration Variables</h2>
+            <div class="config-table">
+                <!-- Configuration variables will be populated here -->
+            </div>
+        </div>
+        
+        <button id="analyzeButton">Analyze</button>
+        <div id="analysisResult">
+            <!-- Analysis results will be populated here -->
+        </div>
+    </div>
+    
+    <script>
+        // JavaScript to handle API calls and populate the data in the tables and other elements
+        document.getElementById('analyzeButton').addEventListener('click', function() {
+            const headers = {
+                "accept": "application/json",
+                "APCA-API-KEY-ID": API_KEY,
+                "APCA-API-SECRET-KEY": API_SECRET
+            };
+            
+            function fetchPortfolioHistory() {
+                const url = 'https://paper-api.alpaca.markets/v2/account/portfolio/history?period=5D&timeframe=1D';
+                return fetch(url, { headers })
+                    .then(response => response.json())
+                    .then(data => {
+                        const tbody = document.getElementById('portfolioHistory').querySelector('tbody');
+                        data.timestamp.forEach((timestamp, index) => {
+                            const row = tbody.insertRow();
+                            row.insertCell(0).textContent = new Date(timestamp * 1000).toLocaleString();
+                            row.insertCell(1).textContent = data.equity[index];
+                            row.insertCell(2).textContent = data.profit_loss[index];
+                            row.insertCell(3).textContent = (data.profit_loss_pct[index] * 100).toFixed(2) + '%';
+                        });
+                    });
+            }
+
+            function fetchActivityHistory() {
+                const url = 'https://paper-api.alpaca.markets/v2/account/activities';
+                return fetch(url, { headers })
+                    .then(response => response.json())
+                    .then(data => {
+                        const tbody = document.getElementById('activityHistory').querySelector('tbody');
+                        data.forEach(activity => {
+                            const row = tbody.insertRow();
+                            row.insertCell(0).textContent = new Date(activity.transaction_time).toLocaleString();
+                            row.insertCell(1).textContent = activity.symbol;
+                            row.insertCell(2).textContent = activity.symbol.endsWith('USD') ? 'Crypto' : 'Stock';
+                            row.insertCell(3).textContent = activity.side;
+                            row.insertCell(4).textContent = activity.price;
+                            row.insertCell(5).textContent = activity.qty;
+                            row.insertCell(6).textContent = activity.order_status;
+                            row.insertCell(7).textContent = (activity.price * activity.qty).toFixed(2);
+                        });
+                    });
+            }
+
+            function fetchPositions() {
+                const url = 'https://paper-api.alpaca.markets/v2/positions';
+                return fetch(url, { headers })
+                    .then(response => response.json())
+                    .then(data => {
+                        const tbody = document.getElementById('positions').querySelector('tbody');
+                        data.forEach(position => {
+                            const row = tbody.insertRow();
+                            row.insertCell(0).textContent = position.symbol;
+                            row.insertCell(1).textContent = position.symbol.endsWith('USD') ? 'Crypto' : 'Stock';
+                            row.insertCell(2).textContent = position.qty;
+                            row.insertCell(3).textContent = position.avg_entry_price;
+                            row.insertCell(4).textContent = position.current_price;
+                            row.insertCell(5).textContent = position.market_value;
+                            row.insertCell(6).textContent = position.cost_basis;
+                            row.insertCell(7).textContent = position.unrealized_pl;
+                            row.insertCell(8).textContent = (position.unrealized_plpc * 100).toFixed(2) + '%';
+                        });
+                    });
+            }
+
+            function fetchAccountSummary() {
+                const url = 'https://paper-api.alpaca.markets/v2/account';
+                return fetch(url, { headers })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('equity').textContent = parseFloat(data.equity).toFixed(2);
+                        document.getElementById('availableCash').textContent = parseFloat(data.cash).toFixed(2);
+                    });
+            }
+
+            fetchPortfolioHistory();
+            fetchActivityHistory();
+            fetchPositions();
+            fetchAccountSummary();
+        });
+    </script>
+</body>
+</html>
