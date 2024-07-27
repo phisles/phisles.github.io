@@ -133,7 +133,6 @@
     </div>
     
     <script>
-        // JavaScript to handle API calls and populate the data in the tables and other elements
         document.getElementById('analyzeButton').addEventListener('click', function() {
             const headers = {
                 "accept": "application/json",
@@ -144,9 +143,16 @@
             function fetchPortfolioHistory() {
                 const url = 'https://paper-api.alpaca.markets/v2/account/portfolio/history?period=5D&timeframe=1D';
                 return fetch(url, { headers })
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            console.error('Failed to fetch portfolio history:', response.status, response.statusText);
+                            return Promise.reject(response.statusText);
+                        }
+                        return response.json();
+                    })
                     .then(data => {
                         const tbody = document.getElementById('portfolioHistory').querySelector('tbody');
+                        tbody.innerHTML = '';  // Clear existing rows
                         data.timestamp.forEach((timestamp, index) => {
                             const row = tbody.insertRow();
                             row.insertCell(0).textContent = new Date(timestamp * 1000).toLocaleString();
@@ -154,15 +160,23 @@
                             row.insertCell(2).textContent = data.profit_loss[index];
                             row.insertCell(3).textContent = (data.profit_loss_pct[index] * 100).toFixed(2) + '%';
                         });
-                    });
+                    })
+                    .catch(error => console.error('Error in fetchPortfolioHistory:', error));
             }
 
             function fetchActivityHistory() {
                 const url = 'https://paper-api.alpaca.markets/v2/account/activities';
                 return fetch(url, { headers })
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            console.error('Failed to fetch activity history:', response.status, response.statusText);
+                            return Promise.reject(response.statusText);
+                        }
+                        return response.json();
+                    })
                     .then(data => {
                         const tbody = document.getElementById('activityHistory').querySelector('tbody');
+                        tbody.innerHTML = '';  // Clear existing rows
                         data.forEach(activity => {
                             const row = tbody.insertRow();
                             row.insertCell(0).textContent = new Date(activity.transaction_time).toLocaleString();
@@ -174,15 +188,23 @@
                             row.insertCell(6).textContent = activity.order_status;
                             row.insertCell(7).textContent = (activity.price * activity.qty).toFixed(2);
                         });
-                    });
+                    })
+                    .catch(error => console.error('Error in fetchActivityHistory:', error));
             }
 
             function fetchPositions() {
                 const url = 'https://paper-api.alpaca.markets/v2/positions';
                 return fetch(url, { headers })
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            console.error('Failed to fetch positions:', response.status, response.statusText);
+                            return Promise.reject(response.statusText);
+                        }
+                        return response.json();
+                    })
                     .then(data => {
                         const tbody = document.getElementById('positions').querySelector('tbody');
+                        tbody.innerHTML = '';  // Clear existing rows
                         data.forEach(position => {
                             const row = tbody.insertRow();
                             row.insertCell(0).textContent = position.symbol;
@@ -195,17 +217,25 @@
                             row.insertCell(7).textContent = position.unrealized_pl;
                             row.insertCell(8).textContent = (position.unrealized_plpc * 100).toFixed(2) + '%';
                         });
-                    });
+                    })
+                    .catch(error => console.error('Error in fetchPositions:', error));
             }
 
             function fetchAccountSummary() {
                 const url = 'https://paper-api.alpaca.markets/v2/account';
                 return fetch(url, { headers })
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            console.error('Failed to fetch account summary:', response.status, response.statusText);
+                            return Promise.reject(response.statusText);
+                        }
+                        return response.json();
+                    })
                     .then(data => {
                         document.getElementById('equity').textContent = parseFloat(data.equity).toFixed(2);
                         document.getElementById('availableCash').textContent = parseFloat(data.cash).toFixed(2);
-                    });
+                    })
+                    .catch(error => console.error('Error in fetchAccountSummary:', error));
             }
 
             fetchPortfolioHistory();
