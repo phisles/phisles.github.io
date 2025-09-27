@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
         <a href="https://philipisles.com/local-vid-desc.html" target="_blank">Network Isolated Video Description</a>
         <a href="https://philipisles.com/mistral-chunk.html" target="_blank">Network Isolated Chunked Transcript Summarization</a>
         <a href="http://159.223.201.65/" target="_blank">Crypto Algo Tracker</a>
-        <a href="https://hedge-2.streamlit.app/" target="_blank">Stock Algo Tracker</a>
         <a href="https://philipisles.com/index.html" target="_blank">Home</a>
         <a href="https://docs.google.com/document/d/1g8YsAiftqTIcP5_qqBJBMYGiBxlv2EnNkbJpZGoCknw/edit?tab=t.0" target="_blank">Drink Menu</a>
     `;
